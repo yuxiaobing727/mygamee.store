@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Action Games | MyGamee</title>
+    <meta name="description" content="Play free online Action games at MyGamee. Browse our collection of exciting action games including Monster Survivors, Stickman Parkour, and more!">
+    <link rel="canonical" href="https://mygamee.store/categories/action.html">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RQ85BD3JDV"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-RQ85BD3JDV');
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        apple: {
+                            blue: '#007AFF',
+                            indigo: '#5856D6',
+                            purple: '#AF52DE',
+                            pink: '#FF2D55',
+                            red: '#FF3B30',
+                            orange: '#FF9500',
+                            yellow: '#FFCC00',
+                            green: '#34C759',
+                            teal: '#5AC8FA',
+                            gray: {
+                                light: '#F2F2F7',
+                                medium: '#E5E5EA',
+                                dark: '#8E8E93'
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* 移动端菜单 */
+        .mobile-menu {
+            display: none;
+        }
+        
+        .mobile-menu.active {
+            display: block;
+        }
+        
+        /* 游戏卡片悬停效果 */
+        .game-card {
+            transition: transform 0.3s ease;
+        }
+        
+        .game-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        /* 游戏缩略图 */
+        .game-thumbnail {
+            height: 180px;
+            object-fit: cover;
+        }
+        
+        @media (max-width: 640px) {
+            .game-thumbnail {
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-apple-gray-light min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="/" class="flex-shrink-0 flex items-center">
+                        <span class="text-apple-blue font-bold text-xl">MyGamee</span>
+                    </a>
+                    <div class="hidden md:ml-6 md:flex md:space-x-8">
+                        <!-- 导航链接 -->
+                        <a href="/" class="text-gray-700 hover:text-apple-blue px-1 pt-1 text-sm font-medium">
+                            Home
+                        </a>
+                        <div class="relative group">
+                            <a href="/categories.html" class="text-apple-blue border-apple-blue border-b-2 px-1 pt-1 text-sm font-medium inline-flex items-center">
+                                Categories
+                                <svg class="ml-1 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                            <div class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10 hidden group-hover:block">
+                                <a href="/categories/action.html" class="block px-4 py-2 text-sm text-apple-blue bg-apple-gray-light">Action</a>
+                                <a href="/categories/shooter.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-apple-gray-light">Shooter</a>
+                                <a href="/categories/puzzle.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-apple-gray-light">Puzzle</a>
+                                <a href="/categories/strategy.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-apple-gray-light">Strategy</a>
+                                <a href="/categories/sports.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-apple-gray-light">Sports</a>
+                            </div>
+                        </div>
+                        <a href="/popular.html" class="text-gray-700 hover:text-apple-blue px-1 pt-1 text-sm font-medium">
+                            Popular
+                        </a>
+                        <a href="/new.html" class="text-gray-700 hover:text-apple-blue px-1 pt-1 text-sm font-medium">
+                            New Games
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 搜索框 -->
+                <div class="flex-1 flex justify-center px-2 lg:ml-6 lg:justify-end">
+                    <div class="max-w-lg w-full lg:max-w-xs">
+                        <label for="search" class="sr-only">Search</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <input id="search" name="search" class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-apple-blue focus:border-apple-blue sm:text-sm" placeholder="Search games" type="search">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 移动端菜单按钮 -->
+                <div class="flex items-center md:hidden">
+                    <button id="mobile-menu-button" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-apple-blue hover:bg-apple-gray-light focus:outline-none focus:ring-2 focus:ring-inset focus:ring-apple-blue">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 移动端菜单 -->
+        <div id="mobile-menu" class="mobile-menu md:hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="/" class="text-gray-700 hover:bg-apple-gray-light hover:text-apple-blue block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                <a href="/categories.html" class="bg-apple-blue text-white block px-3 py-2 rounded-md text-base font-medium">Categories</a>
+                <div class="pl-4">
+                    <a href="/categories/action.html" class="bg-apple-gray-light text-apple-blue block px-3 py-2 rounded-md text-base font-medium">Action</a>
+                    <a href="/categories/shooter.html" class="text-gray-700 hover:bg-apple-gray-light hover:text-apple-blue block px-3 py-2 rounded-md text-base font-medium">Shooter</a>
+                    <a href="/categories/puzzle.html" class="text-gray-700 hover:bg-apple-gray-light hover:text-apple-blue block px-3 py-2 rounded-md text-base font-medium">Puzzle</a>
+                    <a href="/categories/strategy.html" class="text-gray-700 hover:bg-apple-gray-light hover:text-apple-blue block px-3 py-2 rounded-md text-base font-medium">Strategy</a>
+                    <a href="/categories/sports.html" class="text-gray-700 hover:bg-apple-gray-light hover:text-apple-blue block px-3 py-2 rounded-md text-base font-medium">Sports</a>
+                </div>
+                <a href="/popular.html" class="text-gray-700 hover:bg-apple-gray-light hover:text-apple-blue block px-3 py-2 rounded-md text-base font-medium">Popular</a>
+                <a href="/new.html" class="text-gray-700 hover:bg-apple-gray-light hover:text-apple-blue block px-3 py-2 rounded-md text-base font-medium">New Games</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
+                <span class="block text-apple-blue">Action Games</span>
+            </h1>
+            <p class="mt-3 max-w-md mx-auto text-base text-gray-700 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
+                Experience thrilling adventures and fast-paced gameplay in our collection of action games.
+            </p>
+        </div>
+
+        <!-- 游戏列表 -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            <!-- Monster Survivors -->
+            <div class="game-card bg-white rounded-xl shadow-lg overflow-hidden">
+                <a href="/games/monster-survivors.html">
+                    <img src="https://via.placeholder.com/640x360?text=Monster+Survivors" alt="Monster Survivors" class="w-full game-thumbnail">
+                    <div class="p-4">
+                        <h2 class="text-xl font-bold text-gray-900 mb-2">Monster Survivors</h2>
+                        <p class="text-gray-600 text-sm mb-3">Survive waves of monsters in this intense action game. Upgrade your character and defeat powerful boss monsters.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-apple-blue text-white">
+                                Action
+                            </span>
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-yellow-500" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                </svg>
+                                <span class="text-xs text-gray-600 ml-1">4.8/5</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Stickman Parkour -->
+            <div class="game-card bg-white rounded-xl shadow-lg overflow-hidden">
+                <a href="/games/stickman-parkour.html">
+                    <img src="https://via.placeholder.com/640x360?text=Stickman+Parkour" alt="Stickman Parkour" class="w-full game-thumbnail">
+                    <div class="p-4">
+                        <h2 class="text-xl font-bold text-gray-900 mb-2">Stickman Parkour</h2>
+                        <p class="text-gray-600 text-sm mb-3">Run, jump, and slide through dangerous levels with your stickman character in this fast-paced parkour game.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-apple-blue text-white">
+                                Action
+                            </span>
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-yellow-500" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                </svg>
+                                <span class="text-xs text-gray-600 ml-1">4.5/5</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Sparta Hoppers -->
+            <div class="game-card bg-white rounded-xl shadow-lg overflow-hidden">
+                <a href="/games/spartahoppers.html">
+                    <img src="https://via.placeholder.com/640x360?text=Sparta+Hoppers" alt="Sparta Hoppers" class="w-full game-thumbnail">
+                    <div class="p-4">
+                        <h2 class="text-xl font-bold text-gray-900 mb-2">Sparta Hoppers</h2>
+                        <p class="text-gray-600 text-sm mb-3">Lead your Spartan warriors to victory by strategically hopping across the battlefield in this tactical action game.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-apple-blue text-white">
+                                Action
+                            </span>
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-yellow-500" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                </svg>
+                                <span class="text-xs text-gray-600 ml-1">5.0/5</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p>&copy; 2023 MyGamee. All rights reserved.</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-300 hover:text-white">Privacy Policy</a>
+                    <a href="#" class="text-gray-300 hover:text-white">Terms of Service</a>
+                    <a href="#" class="text-gray-300 hover:text-white">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 移动端菜单切换
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('active');
+        });
+        
+        // 搜索功能
+        document.getElementById('search').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const searchTerm = this.value.trim();
+                if (searchTerm) {
+                    window.location.href = '/search.html?q=' + encodeURIComponent(searchTerm);
+                }
+            }
+        });
+    </script>
+</body>
+</html> 

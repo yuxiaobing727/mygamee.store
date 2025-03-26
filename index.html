@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monster Survivors - Epic Survival Action Game</title>
-    <meta name="description" content="Play Monster Survivors online for free - An intense survival action game where you battle endless waves of monsters with unique abilities and power-ups.">
+    <title>MyGamee - Free Online Games | Play the Best Browser Games</title>
+    <meta name="description" content="Play free online games at MyGamee. Enjoy a collection of action, shooter, puzzle, strategy and sports games that you can play directly in your browser.">
     <link rel="canonical" href="https://mygamee.store/">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RQ85BD3JDV"></script>
@@ -42,6 +42,51 @@
             }
         }
     </script>
+    <style>
+        /* 全局样式 */
+        .game-iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+        }
+        
+        @media (max-width: 768px) {
+            .game-iframe {
+                height: 400px;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .game-iframe {
+                height: 300px;
+            }
+        }
+        
+        /* 移动端菜单 */
+        .mobile-menu {
+            display: none;
+        }
+        
+        .mobile-menu.active {
+            display: block;
+        }
+
+        /* 加载动画 */
+        .loader {
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #007AFF;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
 </head>
 <body class="bg-apple-gray-light min-h-screen">
     <!-- Navigation -->
@@ -50,67 +95,253 @@
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
                     <a href="/" class="flex-shrink-0 flex items-center">
-                        <span class="text-apple-blue font-bold text-xl">Monster Survivors</span>
+                        <span class="text-apple-blue font-bold text-xl">MyGamee</span>
                     </a>
+                    <div class="hidden md:ml-6 md:flex md:space-x-8">
+                        <!-- 导航链接 -->
+                        <a href="/" class="text-apple-blue border-apple-blue border-b-2 px-1 pt-1 text-sm font-medium">
+                            Home
+                        </a>
+                        <div class="relative group">
+                            <a href="/categories.html" class="text-gray-700 hover:text-apple-blue px-1 pt-1 text-sm font-medium inline-flex items-center">
+                                Categories
+                                <svg class="ml-1 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                            <div class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10 hidden group-hover:block">
+                                <a href="/categories/action.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-apple-gray-light">Action</a>
+                                <a href="/categories/shooter.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-apple-gray-light">Shooter</a>
+                                <a href="/categories/puzzle.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-apple-gray-light">Puzzle</a>
+                                <a href="/categories/strategy.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-apple-gray-light">Strategy</a>
+                                <a href="/categories/sports.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-apple-gray-light">Sports</a>
+                            </div>
+                        </div>
+                        <a href="/popular.html" class="text-gray-700 hover:text-apple-blue px-1 pt-1 text-sm font-medium">
+                            Popular
+                        </a>
+                        <a href="/new.html" class="text-gray-700 hover:text-apple-blue px-1 pt-1 text-sm font-medium">
+                            New Games
+                        </a>
+                    </div>
                 </div>
+                
+                <!-- 搜索框 -->
+                <div class="flex-1 flex justify-center px-2 lg:ml-6 lg:justify-end">
+                    <div class="max-w-lg w-full lg:max-w-xs">
+                        <label for="search" class="sr-only">Search</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <input id="search" name="search" class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-apple-blue focus:border-apple-blue sm:text-sm" placeholder="Search games" type="search">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 移动端菜单按钮 -->
+                <div class="flex items-center md:hidden">
+                    <button id="mobile-menu-button" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-apple-blue hover:bg-apple-gray-light focus:outline-none focus:ring-2 focus:ring-inset focus:ring-apple-blue">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 移动端菜单 -->
+        <div id="mobile-menu" class="mobile-menu md:hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="/" class="bg-apple-blue text-white block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                <a href="/categories.html" class="text-gray-700 hover:bg-apple-gray-light hover:text-apple-blue block px-3 py-2 rounded-md text-base font-medium">Categories</a>
+                <div class="pl-4">
+                    <a href="/categories/action.html" class="text-gray-700 hover:bg-apple-gray-light hover:text-apple-blue block px-3 py-2 rounded-md text-base font-medium">Action</a>
+                    <a href="/categories/shooter.html" class="text-gray-700 hover:bg-apple-gray-light hover:text-apple-blue block px-3 py-2 rounded-md text-base font-medium">Shooter</a>
+                    <a href="/categories/puzzle.html" class="text-gray-700 hover:bg-apple-gray-light hover:text-apple-blue block px-3 py-2 rounded-md text-base font-medium">Puzzle</a>
+                    <a href="/categories/strategy.html" class="text-gray-700 hover:bg-apple-gray-light hover:text-apple-blue block px-3 py-2 rounded-md text-base font-medium">Strategy</a>
+                    <a href="/categories/sports.html" class="text-gray-700 hover:bg-apple-gray-light hover:text-apple-blue block px-3 py-2 rounded-md text-base font-medium">Sports</a>
+                </div>
+                <a href="/popular.html" class="text-gray-700 hover:bg-apple-gray-light hover:text-apple-blue block px-3 py-2 rounded-md text-base font-medium">Popular</a>
+                <a href="/new.html" class="text-gray-700 hover:bg-apple-gray-light hover:text-apple-blue block px-3 py-2 rounded-md text-base font-medium">New Games</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Main Content -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div class="text-center mb-8">
-            <h1 class="text-4xl font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
-                <span class="block text-apple-blue">Monster Survivors</span>
-            </h1>
-            <p class="mt-3 max-w-md mx-auto text-base text-gray-700 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
-                Battle endless hordes of monsters, upgrade your character, and see how long you can survive in this addictive action game.
-            </p>
-        </div>
+        <!-- 特色游戏 -->
+        <div id="featured-game-container">
+            <div class="text-center mb-8">
+                <h1 class="text-4xl font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
+                    <span class="block text-apple-blue" id="featured-game-title">Featured Game</span>
+                </h1>
+                <p class="mt-3 max-w-md mx-auto text-base text-gray-700 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl" id="featured-game-description">
+                    Loading an awesome game for you...
+                </p>
+                <div class="mt-4">
+                    <button id="refresh-game" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-apple-blue hover:bg-apple-indigo focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-apple-blue">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd" />
+                        </svg>
+                        Try Another Game
+                    </button>
+                </div>
+            </div>
 
-        <!-- Game Container -->
-        <div class="mb-12 bg-white rounded-xl shadow-lg overflow-hidden">
-            <div class="aspect-w-16 aspect-h-9 w-full">
-                <iframe src="https://cloud.onlinegames.io/games/2025/unity/monster-survivors/index-og.html" 
-                        class="w-full h-[600px] sm:h-[500px] md:h-[600px]" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
-                </iframe>
+            <div class="mb-12 bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="aspect-w-16 aspect-h-9 w-full">
+                    <div id="game-loading" class="flex items-center justify-center h-full bg-gray-100">
+                        <div class="loader"></div>
+                        <p class="ml-4 text-gray-600">Loading your game...</p>
+                    </div>
+                    <iframe id="featured-game-iframe" 
+                            class="game-iframe" 
+                            style="display: none;"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                    </iframe>
+                </div>
             </div>
         </div>
 
-        <!-- Game Description -->
+        <!-- 游戏分类展示 -->
+        <div class="mb-12">
+            <h2 class="text-2xl font-bold text-apple-purple mb-6">Game Categories</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                <a href="/categories/action.html" class="block">
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                        <div class="bg-apple-blue h-24 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-gray-900">Action</h3>
+                            <p class="text-sm text-gray-600">Fast-paced games</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="/categories/shooter.html" class="block">
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                        <div class="bg-apple-red h-24 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                            </svg>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-gray-900">Shooter</h3>
+                            <p class="text-sm text-gray-600">Aim and shoot</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="/categories/puzzle.html" class="block">
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                        <div class="bg-apple-purple h-24 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
+                            </svg>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-gray-900">Puzzle</h3>
+                            <p class="text-sm text-gray-600">Train your brain</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="/categories/strategy.html" class="block">
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                        <div class="bg-apple-green h-24 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                            </svg>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-gray-900">Strategy</h3>
+                            <p class="text-sm text-gray-600">Plan to win</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="/categories/sports.html" class="block">
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                        <div class="bg-apple-orange h-24 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                            </svg>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-gray-900">Sports</h3>
+                            <p class="text-sm text-gray-600">Athletic challenges</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- 热门游戏 -->
+        <div class="mb-12">
+            <h2 class="text-2xl font-bold text-apple-red mb-6">Popular Games</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                    <a href="/games/monster-survivors.html">
+                        <img src="https://via.placeholder.com/600x400?text=Monster+Survivors" alt="Monster Survivors" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h3 class="font-semibold text-gray-900">Monster Survivors</h3>
+                            <p class="text-sm text-gray-600 mb-2">Action</p>
+                            <p class="text-sm text-gray-700">Battle endless waves of monsters in this survival game.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                    <a href="/games/warstrike.html">
+                        <img src="https://via.placeholder.com/600x400?text=Warstrike" alt="Warstrike" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h3 class="font-semibold text-gray-900">Warstrike</h3>
+                            <p class="text-sm text-gray-600 mb-2">Shooter</p>
+                            <p class="text-sm text-gray-700">Intense first-person shooter with realistic combat.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                    <a href="/games/basketball-king.html">
+                        <img src="https://via.placeholder.com/600x400?text=Basketball+King" alt="Basketball King" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h3 class="font-semibold text-gray-900">Basketball King</h3>
+                            <p class="text-sm text-gray-600 mb-2">Sports</p>
+                            <p class="text-sm text-gray-700">Become the king of the court in this basketball game.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="text-center mt-6">
+                <a href="/popular.html" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-apple-blue hover:bg-apple-indigo focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-apple-blue">
+                    View All Popular Games
+                </a>
+            </div>
+        </div>
+
+        <!-- 网站介绍 -->
         <div class="bg-white rounded-xl shadow-lg p-6 mb-12">
-            <h2 class="text-2xl font-bold text-apple-purple mb-4">About Monster Survivors</h2>
+            <h2 class="text-2xl font-bold text-apple-purple mb-4">Welcome to MyGamee</h2>
             <p class="text-gray-700 mb-6">
-                Monster Survivors is an intense survival action game where you fight against endless waves of monsters. 
-                Choose your character, each with unique abilities, and survive as long as possible while collecting 
-                power-ups and defeating increasingly challenging enemies.
+                MyGamee is your destination for free online games that you can play directly in your browser. We offer a wide variety of games across different categories, including action-packed adventures, challenging puzzles, intense shooters, strategic challenges, and exciting sports games.
             </p>
 
-            <h2 class="text-2xl font-bold text-apple-green mb-4">How To Play</h2>
-            <p class="text-gray-700 mb-6">
-                Use arrow keys or WASD to move your character. Your character attacks automatically when enemies are in range.
-                Collect experience orbs to level up and choose new abilities or upgrades. The longer you survive, the stronger 
-                and more numerous the enemies become. How long can you last?
-            </p>
-
-            <h2 class="text-2xl font-bold text-apple-orange mb-4">Game Features</h2>
+            <h2 class="text-2xl font-bold text-apple-green mb-4">Why Play at MyGamee?</h2>
             <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2">
-                <li>Multiple playable characters with unique abilities</li>
-                <li>Dozens of different weapons and passive items to collect</li>
-                <li>Procedurally generated enemy waves for endless replayability</li>
-                <li>Challenging boss encounters</li>
-                <li>Skill-based progression system</li>
-                <li>Beautiful pixel art graphics and immersive soundtrack</li>
+                <li>No downloads required - play instantly in your browser</li>
+                <li>Optimized for both desktop and mobile devices</li>
+                <li>Regular updates with new games</li>
+                <li>Wide variety of game categories</li>
+                <li>No registration needed to play</li>
             </ul>
 
-            <h2 class="text-2xl font-bold text-apple-red mb-4">Strategy Tips</h2>
+            <h2 class="text-2xl font-bold text-apple-orange mb-4">New Games Added Regularly</h2>
             <p class="text-gray-700 mb-6">
-                Focus on movement and positioning to avoid getting surrounded by enemies. Prioritize upgrades that complement 
-                your character's strengths. Area-of-effect attacks are crucial for dealing with large groups of monsters.
-                Don't forget to collect health pickups when available, and try to maintain a safe distance from dangerous enemies.
+                We're constantly updating our collection with new and exciting games. Be sure to check back often to discover the latest additions to our library. From fast-paced action games to brain-teasing puzzles, there's always something new to try!
             </p>
         </div>
     </main>
@@ -120,7 +351,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-4 md:mb-0">
-                    <p>&copy; 2023 Monster Survivors. All rights reserved.</p>
+                    <p>&copy; 2023 MyGamee. All rights reserved.</p>
                 </div>
                 <div class="flex space-x-6">
                     <a href="#" class="text-gray-300 hover:text-white">Privacy Policy</a>
@@ -131,13 +362,172 @@
         </div>
     </footer>
 
-    <!-- Add responsive styling for iframe -->
-    <style>
-        @media (max-width: 640px) {
-            iframe {
-                height: 300px;
+    <script>
+        // 移动端菜单切换
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('active');
+        });
+        
+        // 搜索功能
+        document.getElementById('search').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const searchTerm = this.value.trim();
+                if (searchTerm) {
+                    window.location.href = '/search.html?q=' + encodeURIComponent(searchTerm);
+                }
             }
+        });
+
+        // 随机游戏功能
+        const games = [
+            {
+                title: "Monster Survivors",
+                description: "Battle endless hordes of monsters, upgrade your character, and see how long you can survive in this addictive action game.",
+                iframe: "https://cloud.onlinegames.io/games/2025/unity/monster-survivors/index-og.html",
+                url: "/games/monster-survivors.html",
+                category: "Action"
+            },
+            {
+                title: "Stickman Parkour",
+                description: "Master incredible parkour moves as a stickman in this fast-paced action platformer game.",
+                iframe: "https://cloud.onlinegames.io/games/2024/construct/219/stickman-parkour/index-og.html",
+                url: "/games/stickman-parkour.html",
+                category: "Action"
+            },
+            {
+                title: "Sparta Hoppers",
+                description: "Lead your Spartan warriors to victory by strategically hopping across the battlefield.",
+                iframe: "https://cloud.onlinegames.io/games/2025/construct/227/spartahoppers/index-og.html",
+                url: "/games/spartahoppers.html",
+                category: "Action"
+            },
+            {
+                title: "Draw the Bridge",
+                description: "Use your creativity to draw bridges that help characters cross dangerous gaps.",
+                iframe: "https://www.onlinegames.io/games/2021/4/draw-the-bridge/index.html",
+                url: "/games/draw-the-bridge.html",
+                category: "Puzzle"
+            },
+            {
+                title: "Tile Match",
+                description: "Match identical tiles in this challenging puzzle game that tests your memory and concentration.",
+                iframe: "https://cloud.onlinegames.io/games/2025/unity/tile-match/index-og.html",
+                url: "/games/tile-match.html",
+                category: "Puzzle"
+            },
+            {
+                title: "Nova Craft",
+                description: "Build, craft and survive in this block-based adventure game.",
+                iframe: "https://cloud.onlinegames.io/games/2024/more2/nova-craft/index.html",
+                url: "/games/nova-craft.html",
+                category: "Puzzle"
+            },
+            {
+                title: "Masked Special Forces",
+                description: "Join the elite special forces and complete dangerous missions in enemy territory.",
+                iframe: "https://www.onlinegames.io/games/2022/unity2/masked-special-forces/index.html",
+                url: "/games/masked-special-forces.html",
+                category: "Shooter"
+            },
+            {
+                title: "Warstrike",
+                description: "Engage in intense combat operations with realistic weapons and strategic gameplay.",
+                iframe: "https://cloud.onlinegames.io/games/2024/unity3/warstrike/index-og.html",
+                url: "/games/warstrike.html",
+                category: "Shooter"
+            },
+            {
+                title: "Legendary Sniper",
+                description: "Become the most skilled sniper and complete challenging assassination missions.",
+                iframe: "https://www.onlinegames.io/games/2021/unity3/legendary-sniper/index.html",
+                url: "/games/legendary-sniper.html",
+                category: "Shooter"
+            },
+            {
+                title: "Stick Guys Defense",
+                description: "Defend your base from waves of stick figure enemies in this strategic tower defense game.",
+                iframe: "https://www.onlinegames.io/games/2022/unity3/stick-guys-defense/index.html",
+                url: "/games/stick-guys-defense.html",
+                category: "Strategy"
+            },
+            {
+                title: "State IO Wars",
+                description: "Conquer territories and expand your empire in this strategic IO-style game.",
+                iframe: "https://www.onlinegames.io/games/2024/construct/233/state-io-wars/index.html",
+                url: "/games/state-io-wars.html",
+                category: "Strategy"
+            },
+            {
+                title: "Master Chess",
+                description: "Test your skills in the ultimate game of strategy with different difficulty levels.",
+                iframe: "https://www.onlinegames.io/games/2023/code/master-chess/index.html",
+                url: "/games/master-chess.html",
+                category: "Strategy"
+            },
+            {
+                title: "Basket Hoop",
+                description: "Perfect your basketball shooting skills in this addictive sports game.",
+                iframe: "https://cloud.onlinegames.io/games/2024/construct/311/basket-hoop/index-og.html",
+                url: "/games/basket-hoop.html",
+                category: "Sports"
+            },
+            {
+                title: "Soccer Random Pro",
+                description: "Play exciting soccer matches with random teams and unpredictable events.",
+                iframe: "https://cloud.onlinegames.io/games/2024/construct/303/soccer-random-pro/index-og.html",
+                url: "/games/soccer-random-pro.html",
+                category: "Sports"
+            },
+            {
+                title: "Basketball King",
+                description: "Become the king of the court with your basketball skills in this challenging sports game.",
+                iframe: "https://cloud.onlinegames.io/games/2024/construct/316/basketball-king/index-og.html",
+                url: "/games/basketball-king.html",
+                category: "Sports"
+            },
+            {
+                title: "8 Ball Pool Billiard",
+                description: "Show off your billiards skills in this realistic 8-ball pool simulation.",
+                iframe: "https://www.onlinegames.io/games/2022/unity3/8-ball-pool-billiard/index.html",
+                url: "/games/8-ball-pool-billiard.html",
+                category: "Sports"
+            }
+        ];
+
+        // 显示随机游戏
+        function displayRandomGame() {
+            const gameLoader = document.getElementById('game-loading');
+            const gameIframe = document.getElementById('featured-game-iframe');
+            const gameTitle = document.getElementById('featured-game-title');
+            const gameDescription = document.getElementById('featured-game-description');
+            
+            // 显示加载状态
+            gameLoader.style.display = 'flex';
+            gameIframe.style.display = 'none';
+            
+            // 随机选择一个游戏
+            const randomGame = games[Math.floor(Math.random() * games.length)];
+            
+            // 更新游戏信息
+            gameTitle.textContent = randomGame.title;
+            gameDescription.textContent = randomGame.description;
+            gameIframe.src = randomGame.iframe;
+            
+            // 监听iframe加载完成
+            gameIframe.onload = function() {
+                gameLoader.style.display = 'none';
+                gameIframe.style.display = 'block';
+            };
+            
+            // 添加游戏链接
+            gameTitle.innerHTML = `<a href="${randomGame.url}" class="text-apple-blue hover:underline">${randomGame.title}</a>`;
         }
-    </style>
+
+        // 页面加载时显示随机游戏
+        document.addEventListener('DOMContentLoaded', displayRandomGame);
+        
+        // 刷新按钮点击事件
+        document.getElementById('refresh-game').addEventListener('click', displayRandomGame);
+    </script>
 </body>
 </html> 
